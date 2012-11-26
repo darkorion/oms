@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Class-Path: activation.jar FastInfoset.jar http.jar jaxb-api.jar jaxb-
+ impl.jar jaxb-xjc.jar jaxws-api.jar jaxws-rt.jar jaxws-tools.jar jsr1
+ 73_api.jar jsr181-api.jar jsr250-api.jar resolver.jar saaj-api.jar sa
+ aj-impl.jar sjsxp.jar stax-ex.jar streambuffer.jar
+

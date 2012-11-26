@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact name="SMSGatewayTest:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SMSGatewayTest_jar</output-path>
+    <root id="root">
+      <element id="archive" name="SMSGatewayTest.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="OMSGatewayClient" />
+      </element>
+      <element id="library" level="project" name="Glassfish / JAX-WS 2.X RI / Metro 1.X / JWSDP 2.0-Glassfish / JAX-WS 2.X RI / Metro 1.X / JWSDP 2.0" />
+    </root>
+  </artifact>
+</component>
