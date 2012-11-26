@@ -14,13 +14,6 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
-/**
- * Created by IntelliJ IDEA.
- * User: petrov
- * Date: 21.11.12
- * Time: 18:38
- * To change this template use File | Settings | File Templates.
- */
 public class test
 {
   public static void main(String[] argv) throws DatatypeConfigurationException, JAXBException {
@@ -30,7 +23,7 @@ public class test
           //final URL url = new URL("https://sms.megafon.ru/oms/service.asmx?WSDL");
 
 
-          final URL url = new URL("file:/D:/Petrov/NetByNet/ECM/megafon.wsdl"); // rewrite
+          final URL url = new URL(".../path/megafon.wsdl"); // rewrite
 
           OMS service = new OMS(url, qName);
 
