@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/Outlook/2006/OMS" 
+xmlns:tns="http://schemas.microsoft.com/office/Outlook/2006/OMS" 
+xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:complexType name="tError">
+        <xs:annotation>
+            <xs:documentation>
+                Specify a type for the error reported by the Web service.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="content" type="xs:string" minOccurs="0" >
+                <xs:annotation>
+                    <xs:documentation>
+                        Descriptions of the error.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="recipientList" type="xs:string" minOccurs="0" >
+                <xs:annotation>
+                    <xs:documentation>
+                        Recipients that are impacted by the error.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="code" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    Code that represents a predefined error.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="severity" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    Severity of the error. Supported values are "failure" and "neutral".
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType> 
+    <xs:complexType name="tXmsResponse">
+        <xs:annotation>
+            <xs:documentation>
+                Specify a type for the response from the Web service.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="error" type="tns:tError" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>
+                        Error reported by the Web service.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="xmsResponse" type="tns:tXmsResponse">
+        <xs:annotation>
+            <xs:documentation>
+                Response from the Web service.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+</xs:schema>

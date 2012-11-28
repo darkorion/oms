@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions 
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+    xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" 
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+    xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+    xmlns:tns="http://schemas.microsoft.com/office/Outlook/2006/OMS" 
+    xmlns:s="http://www.w3.org/2001/XMLSchema" 
+    xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+    targetNamespace="http://schemas.microsoft.com/office/Outlook/2006/OMS" 
+    xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <types />
+    <message name="GetUserInfoSoapIn">
+        <part name="xmsUser" type="s:string" />
+    </message>
+    <message name="GetUserInfoSoapOut">
+        <part name="GetUserInfoResult" type="s:string" />
+    </message>
+    <message name="GetServiceInfoSoapIn" />
+    <message name="GetServiceInfoSoapOut">
+        <part name="GetServiceInfoResult" type="s:string" />
+    </message>
+    <message name="DeliverXmsSoapIn">
+        <part name="xmsData" type="s:string" />
+    </message>
+    <message name="DeliverXmsSoapOut">
+        <part name="DeliverXmsResult" type="s:string" />
+    </message>
+    <message name="DeliverXmsBatchSoapIn">
+        <part name="packageXml" type="s:string" />
+    </message>
+    <message name="DeliverXmsBatchSoapOut">
+        <part name="DeliverXmsBatchResult" type="s:string" />
+    </message>
+    <portType name="OMSServiceSoap">
+        <operation name="GetUserInfo">
+            <documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+                Read user infomation such as mobile number.
+            </documentation>
+            <input message="tns:GetUserInfoSoapIn" />
+            <output message="tns:GetUserInfoSoapOut" />
+        </operation>
+        <operation name="GetServiceInfo">
+            <documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+                Read service properties.
+            </documentation>
+            <input message="tns:GetServiceInfoSoapIn" />
+            <output message="tns:GetServiceInfoSoapOut" />
+        </operation>
+        <operation name="DeliverXms">
+            <documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+                Send a text message or multimedia message.
+            </documentation>
+            <input message="tns:DeliverXmsSoapIn" />
+            <output message="tns:DeliverXmsSoapOut" />
+        </operation>
+        <operation name="DeliverXmsBatch">
+            <documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+                Send a batch of text messages and multimedia messages.
+            </documentation>
+            <input message="tns:DeliverXmsBatchSoapIn" />
+            <output message="tns:DeliverXmsBatchSoapOut" />
+        </operation>
+    </portType>
+    <binding name="OMSServiceSoap" type="tns:OMSServiceSoap">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http/" />
+        <operation name="GetUserInfo">
+            <soap:operation soapAction="http://schemas.microsoft.com/office/Outlook/2006/OMS/GetUserInfo" 
+            style="rpc" />
+            <input>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
+                    namespace="http://schemas.microsoft.com/office/Outlook/2006/OMS" />
+            </input>
+            <output>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
+                    namespace="http://schemas.microsoft.com/office/Outlook/2006/OMS" />
+            </output>
+        </operation>
+        <operation name="GetServiceInfo">
+            <soap:operation soapAction="http://schemas.microsoft.com/office/Outlook/2006/OMS/GetServiceInfo"
+                style="rpc" />
+            <input>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
+                    namespace="http://schemas.microsoft.com/office/Outlook/2006/OMS" />
+            </input>
+            <output>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
+                    namespace="http://schemas.microsoft.com/office/Outlook/2006/OMS" />
+            </output>
+        </operation>
+        <operation name="DeliverXms">
+            <soap:operation soapAction="http://schemas.microsoft.com/office/Outlook/2006/OMS/DeliverXms" 
+                style="rpc" />
+            <input>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
+                    namespace="http://schemas.microsoft.com/office/Outlook/2006/OMS" />
+            </input>
+            <output>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
+                    namespace="http://schemas.microsoft.com/office/Outlook/2006/OMS" />
+            </output>
+        </operation>
+        <operation name="DeliverXmsBatch">
+            <soap:operation soapAction="http://schemas.microsoft.com/office/Outlook/2006/OMS/DeliverXmsBatch"                       style="rpc" />
+            <input>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
+                    namespace="http://schemas.microsoft.com/office/Outlook/2006/OMS" />
+            </input>
+            <output>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
+                    namespace="http://schemas.microsoft.com/office/Outlook/2006/OMS" />
+            </output>
+        </operation>
+    </binding>
+    <service name="OMSService">
+        <port name="OMSServiceSoap" binding="tns:OMSServiceSoap">
+            <soap:address location="http://localhost/OMSWS30/Service.asmx" />
+        </port>
+    </service>
+</definitions>

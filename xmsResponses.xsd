@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema
+    targetNamespace="http://schemas.microsoft.com/office/Outlook/2006/OMS"
+    xmlns:tns="http://schemas.microsoft.com/office/Outlook/2006/OMS"
+    xmlns="http://schemas.microsoft.com/office/Outlook/2006/OMS"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"
+    attributeFormDefault="qualified" elementFormDefault="qualified">
+	<xs:include schemaLocation="xmsResponse.xsd"/>
+    <xs:element name="xmsResponses" type="tXmsResponses" >
+        <xs:annotation>
+            <xs:documentation>
+                Specify a batch of responses from the Web service.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element >
+    <xs:complexType name="tXmsResponses">
+        <xs:annotation>
+            <xs:documentation>
+                A batch of responses from the Web service.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="xmsResponse" type="tns:tXmsResponse" maxOccurs="unbounded" >
+                <xs:annotation>
+                    <xs:documentation>
+                        Specify a response message from the Web service.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element >
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

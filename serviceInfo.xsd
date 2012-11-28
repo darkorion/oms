@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" 
+    targetNamespace="http://schemas.microsoft.com/office/Outlook/2006/OMS" 
+    xmlns:tns="http://schemas.microsoft.com/office/Outlook/2006/OMS" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:complexType name="tSMS_SENDER">
+        <xs:annotation>
+            <xs:documentation>
+                Specify a type for outgoing text message service.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="maxRecipientsPerMessage" type="xs:unsignedInt" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    Maximum number of recipients allowed for a text message.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="maxMessagesPerSend" type="xs:unsignedInt" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    Maximum number of split text messages allowed in one DeliverXms transaction.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="maxSbcsPerMessage" type="xs:unsignedInt" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    Maximum number of single-byte chars a text message can have.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="maxDbcsPerMessage" type="xs:unsignedInt" use="required" >
+            <xs:annotation>
+                <xs:documentation>
+                    Maximum number of double-byte chars a text message can have.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="tMMS_SENDER">
+        <xs:annotation>
+            <xs:documentation>
+                Specify a type for outgoing multimedia message service.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="supportSlide" type="xs:boolean" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    Indicate if the Web service supports multimedia messages that are described as a series of slides using SMIL. 
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="maxRecipientsPerMessage" type="xs:unsignedInt" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    Maximum number of recipients allowed for a multimedia message.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="maxSizePerMessage" type="xs:unsignedInt" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    Maximum size in bytes that a multimedia message can have.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="maxSlidesPerMessage" type="xs:unsignedInt" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    Maximum number of slides a multimedia message can have.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="tSupportedService">
+        <xs:annotation>
+            <xs:documentation>
+                Specify a type for services supported by a Web service.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="SMS_SENDER" type="tns:tSMS_SENDER" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>
+                        Outgoing text message service (SMS).
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MMS_SENDER" type="tns:tMMS_SENDER" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>
+                        Outgoing multimedia message service (MMS).
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tServiceInfo">
+        <xs:annotation>
+            <xs:documentation>
+                Specify a type for Web service properties.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="serviceProvider" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        Name of the OMS Web service provider.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="serviceUri" type="xs:string" >
+                <xs:annotation>
+                    <xs:documentation>
+                        Uniform Resource Identifier (URI) of the Web service.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="signUpPage" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        Hyperlink to the sign-up page of the Web service.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="targetLocale" type="xs:unsignedShort" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>
+                        The Locale ID that represents the market the Web service is for. Use zero for global service. 
+                        Default value is zero. 
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="localName" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        Official name of the Web service in local language. If the 'targetLocale' is same 
+                        as the UI language of Microsoft Office Outlook 2007, 'localName' 
+                        is displayed on the account setting user interface of Outlook 2007.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="englishName" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        Official name of the Web service in English. If the 'targetLocale' is different 
+                        from the UI language of Microsoft Office Outlook 2007, 'englishName' is displayed 
+                        on the account setting user interface of Outlook 2007.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="authenticationType" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        Type of authentication supported by the Web service. Currently supported values are 'passport' or 'other'.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="supportedService" type="tns:tSupportedService">
+                <xs:annotation>
+                    <xs:documentation>
+                        Supported services by the Web service.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="serviceInfo" type="tns:tServiceInfo">
+        <xs:annotation>
+            <xs:documentation>
+                Information about the Web service with its properties defined in type tServiceInfo.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+</xs:schema>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema 
+    targetNamespace="http://schemas.microsoft.com/office/Outlook/2006/OMS" 
+    xmlns:tns="http://schemas.microsoft.com/office/Outlook/2006/OMS" 
+    xmlns="http://schemas.microsoft.com/office/Outlook/2006/OMS" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" 
+    attributeFormDefault="qualified" elementFormDefault="qualified">
+	<xs:include schemaLocation="xmsData.xsd"/>
+    <xs:element name="xmsBatch" type="tXmsBatch" >
+        <xs:annotation>
+            <xs:documentation>
+                Specify a batch of message data being transferred to the Web service.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="tXmsBatch">
+        <xs:annotation>
+            <xs:documentation>
+                A batch of message data being transferred to the Web service.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="xmsData" type="tns:tXmsData" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>
+                        Message data being transferred to the Web service.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="client" form="unqualified" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>
+                    Client information, such as "Microsoft Office Outlook 12.0".
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+</xs:schema>

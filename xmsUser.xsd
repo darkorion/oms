@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/Outlook/2006/OMS" 
+xmlns:tns="http://schemas.microsoft.com/office/Outlook/2006/OMS" 
+xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:complexType name="tXmsUser">
+        <xs:annotation>
+            <xs:documentation>
+                Specify a type for user's authentication information.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="userId" type="xs:string" minOccurs="0" >
+                <xs:annotation>
+                    <xs:documentation>
+                        User's identification provided by their service provider.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="password" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>
+                        User's password provided by their service provider.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="customData" type="xs:string" minOccurs="0" >
+                <xs:annotation>
+                    <xs:documentation>
+                        Reserved for future extension.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="client" type="xs:string" >
+            <xs:annotation>
+                <xs:documentation>
+                    Client information, such as "Microsoft Office Outlook 12.0".
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:element name="xmsUser" type="tns:tXmsUser" >
+        <xs:annotation>
+            <xs:documentation>
+                User's authentication information.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+</xs:schema>
